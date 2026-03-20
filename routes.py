@@ -27,4 +27,4 @@ def about():
 @route('/deadlock')
 @view('deadlock')
 def deadlock():
-    return "<h1>Страница Deadlock в разработке...</h1><p>Вернитесь на <a href='/'>главную</a>.</p>"
+    return dict(title='Deadlock Guide', year=datetime.now().year)
