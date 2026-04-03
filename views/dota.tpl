@@ -5,9 +5,75 @@
         padding: 0 !important;
         width: 100%;
         height: 100%;
-        overflow-x: hidden; /* Скрывает горизонтальную прокрутку, если она вдруг появится */
+        overflow-x: hidden;
+    }
+    
+    /* Стили для фиксированной навигации в правом верхнем углу */
+    .top-nav-fixed {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        background: linear-gradient(135deg, #252a3d, #1a1d29);
+        color: #e0e0e0;
+        border: 2px solid #ff6b35;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        min-width: 180px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .nav-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        border-color: #ff9f43;
+        color: #fff;
+    }
+    
+    .nav-btn.secondary {
+        border-color: #4ecdc4;
+    }
+    
+    .nav-btn.secondary:hover {
+        box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+        border-color: #54a0ff;
+    }
+    
+    .nav-btn.tertiary {
+        border-color: #54a0ff;
+    }
+    
+    .nav-btn.tertiary:hover {
+        box-shadow: 0 8px 25px rgba(84, 160, 255, 0.4);
+        border-color: #ff6b35;
+    }
+    
+    /* Адаптив для мобильных */
+    @media (max-width: 768px) {
+        .top-nav-fixed {
+            top: 10px;
+            right: 10px;
+            gap: 8px;
+        }
+        .nav-btn {
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            min-width: 140px;
+        }
     }
 </style>
+
 <div style="
     background-color: #1a1d29; 
     background-image: url('static/images/fon.png'); 
@@ -19,21 +85,27 @@
     color: #e0e0e0;
     border: none;">
     
+    <!-- 🔘 ФИКСИРОВАННАЯ НАВИГАЦИЯ (правый верхний угол) -->
+    <div class="top-nav-fixed">
+        <a href="/" class="nav-btn">Дота</a>
+        <a href="/deadlock" class="nav-btn secondary">Дедлок</a>
+        <a href="/about" class="nav-btn tertiary">Об авторах</a>
+    </div>
+    
     <!-- Контейнер с ограниченной шириной и центрированием -->
-    <div class="container" style="max-width: 800px; padding-top: 40px; margin: 0 auto;">
+    <div class="container" style="max-width: 800px; padding-top: 40px; margin: 0 auto">
         
-        <!-- ОБНОВЛЕННЫЙ ЗАГОЛОВОК С АКЦЕНТОМ -->
+        <!-- ЗАГОЛОВОК С АКЦЕНТОМ -->
         <div class="text-center mb-5">
-            <!-- Увеличенный заголовок Dota 2 -->
             <h1 class="fw-bold" style="color: #ff0000; font-size: 6rem; line-height: 1.2; margin-bottom: 15px; margin-left: 280px;">
                 Dota 2
             </h1>
             
-            <!-- Маленькая оранжевая полоска под заголовком -->
+            <!-- Маленькая оранжевая полоска под заголовком --> 
             <div style="width: 100px; height: 4px; background: #ff6b35; margin: 0 auto 20px auto;"></div>
         </div>
 
-        <!-- ОСНОВНОЙ КОНТЕНТ - ВСЕ БЛОКИ В ОДНОЙ КОЛОНКЕ -->
+        <!-- ВСЕ БЛОКИ В ОДНОЙ КОЛОНКЕ -->
         <div class="row justify-content-center">
             <div class="col-12">
                 
@@ -42,16 +114,14 @@
                     <div class="card-header" style="background-color: #ff6b35; color: white; border-radius: 8px 8px 0 0 !important; padding: 15px 20px; font-size: 2rem;">
                         <h4 class="m-0"><strong>🏆</strong> Цель игры</h4>
                     </div>
-                    <!-- Добавлен padding: 30px для отступа от краев рамки -->
                     <div class="card-body p-4" style="padding: 30px !important;">
-                        <!-- Увеличен размер шрифта до 1.2rem и добавлен отступ снизу -->
                         <p style="color: #c0c0c0; line-height: 1.8; font-size: 2rem; margin-bottom: 25px;">
                             Ваша главная задача — разрушить <strong style="color: #ff6b35;">Древний (Ancient)</strong> на базе врага. 
                             Это большое здание в центре вражеской базы, защищенное башнями и героями.
                         </p>
                         <div class="row mt-4 justify-content-center">
                             <div class="col-md-5">
-                                <!-- Увеличен шрифт в списках -->
+                                <!-- Список -->
                                 <ul class="list-unstyled text-start" style="color: #a0a0a0; display: inline-block; font-size: 2rem;">
                                     <li class="mb-2">✅ <strong>Last Hit:</strong> Добивайте крипов</li>
                                     <li class="mb-2">✅ <strong>Фарм:</strong> Копите золото</li>
@@ -182,3 +252,8 @@
                         </div>
                     </div>
                 </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
